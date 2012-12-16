@@ -1,0 +1,1 @@
+../PyFoam/bin/pyFoamDumpConfiguration.py
