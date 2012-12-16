@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 # $Id: demo.py 299 2007-03-30 12:52:17Z mhagger $
 
 # Copyright (C) 1999-2003 Michael Haggerty <mhagger@alum.mit.edu>

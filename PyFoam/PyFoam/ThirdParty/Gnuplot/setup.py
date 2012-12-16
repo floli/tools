@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 
 # Copyright (C) 2001-2003 Michael Haggerty <mhagger@alum.mit.edu>
 #

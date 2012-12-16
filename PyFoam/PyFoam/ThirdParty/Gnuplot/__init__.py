@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 # $Id: __init__.py 306 2008-05-02 01:09:02Z alford $
 
 # Copyright (C) 1998-2003 Michael Haggerty <mhagger@alum.mit.edu>

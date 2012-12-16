@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 """A test utility that ghets all the information necessary for plotting from a remote machine and writes some plots<<"""
 
 from PyFoam.Applications.PyFoamApplication import PyFoamApplication

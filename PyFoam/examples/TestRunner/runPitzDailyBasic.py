@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 
 from PyFoam.Infrastructure.CTestRun import CTestRun
 from PyFoam.Applications.SamplePlot import SamplePlot

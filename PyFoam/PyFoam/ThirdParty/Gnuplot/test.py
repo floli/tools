@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 
 # $Id: test.py 302 2008-01-14 22:15:19Z bmcage $
 

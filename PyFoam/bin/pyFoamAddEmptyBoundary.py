@@ -1,4 +1,4 @@
-#! /usr/bin/env python 
+#! /usr/bin/env python2 
 
 description="""
 Adds an empty boundary to a case file

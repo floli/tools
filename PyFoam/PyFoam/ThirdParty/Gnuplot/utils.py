@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 
 # $Id: utils.py 297 2007-03-30 11:25:28Z mhagger $
 

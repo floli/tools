@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 
 from runIcoFoamCavity import PlainIcoFoamCavity
 from PyFoam.Applications.Decomposer import Decomposer

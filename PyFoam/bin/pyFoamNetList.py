@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 """Lists the running pyFoam-Processes"""
 
 from PyFoam.Applications.PyFoamApplication import PyFoamApplication

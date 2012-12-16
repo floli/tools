@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python2
 """An interactive Shell that queries a pyFoamServer"""
 
 from PyFoam.Applications.PyFoamApplication import PyFoamApplication
