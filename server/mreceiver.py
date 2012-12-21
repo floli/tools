@@ -31,6 +31,7 @@ def check_username_match(email, username):
         exit(-1)
     
     if user in ALIASES:
+        # user is a reserved administrative alias.
         print "You're not allowed to manage this alias."
         exit(-1)
 
