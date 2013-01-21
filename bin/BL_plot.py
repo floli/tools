@@ -31,8 +31,12 @@ for i, section in enumerate(config.sections()):
     sim = np.compress(sim[:,0] < y_max, sim, axis=0)
     exp = np.compress(exp[:,0] < y_max, exp, axis=0)
 
-    plt.plot(sim[:,0], sim[:,1])
-    plt.plot(exp[:,0], exp[:,1], "-x")
+    # plt.plot(sim[:,0], sim[:,1])
+    # plt.plot(exp[:,0], exp[:,1], "-x")
 
+    plt.xlim(0, 45) 
+    plt.plot(sim[:,1], sim[:,0])       
+    plt.plot(exp[:,1], exp[:,0], "-x")
+    
 plt.show()
                  
