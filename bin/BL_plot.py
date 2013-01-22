@@ -10,7 +10,6 @@ config.read(conf)
 
 conv = {0 : lambda a: float(a)/1000}  # Convert first column from mm to m
 
-print config.sections()
 for i, section in enumerate(config.sections()):
     plt.subplot(np.ceil(len(config.sections())/2.0), 2, i+1)
     plt.grid(True)
@@ -26,6 +25,15 @@ for i, section in enumerate(config.sections()):
      # Move the first column
     sim[:,0] += config.getfloat(section, "sim_x_offset")
 
+    # Compute u_inf from the last n values of the experiemental data
+    n = 5
+    uInf = np.average(exp[-n:,1])
+    print "uInf computed from the last %i values: %f" % (n, uInf)
+
+    # Normalize values
+    sim[:,1] = sim[:,1]/uInf
+    exp[:,1] = exp[:,1]/uInf
+
     # Delete values greater than y_max
     y_max = config.getfloat(section, "y_max")
     sim = np.compress(sim[:,0] < y_max, sim, axis=0)
@@ -34,9 +42,11 @@ for i, section in enumerate(config.sections()):
     # plt.plot(sim[:,0], sim[:,1])
     # plt.plot(exp[:,0], exp[:,1], "-x")
 
-    plt.xlim(0, 45) 
+    plt.xlim(0, 1.1) 
     plt.plot(sim[:,1], sim[:,0])       
     plt.plot(exp[:,1], exp[:,0], "-x")
+
+    print
     
 plt.show()
                  
