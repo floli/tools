@@ -1,6 +1,6 @@
 #!env python2
 
-import argparse, logging, subprocess, sys, time
+import argparse, logging, subprocess, sys, threading, time
 import numpy as np
 
 log = logging.getLogger(sys.argv[0])
@@ -9,6 +9,7 @@ def setup_argparse():
     parser = argparse.ArgumentParser(description='Times processes.')
     parser.add_argument("--rep", "-m", default=1, type=int, help='Number of repetitions')
     parser.add_argument("--time", "-t", default=0, type=float, help='Maximum total runtime of timing tests')
+    parser.add_argument("--timestamps", "-s", help="Print regular timestamps to stdout.")
     parser.add_argument("--verbose", "-v", action="store_const", const=0, default=15, help='Generate more output')
     parser.add_argument("command", help="Command to execute")
     return parser
@@ -53,12 +54,33 @@ def measure(cmd, max_time, max_rep):
     total_time =  time.time() - t0
     return times        
         
+def parse_timestamps(timestamps):
+    return float(timestamps)
+
+
+def start_timestamping(interval):
+    t0 = time.time()
+
+    i = 0
+    while True:
+        i += 1
+        time.sleep(interval)
+        print("==== Timestep {}, time elapsed {:.4}.====".format(i, time.time() - t0))
+        
 
     
 def main():
     parser = setup_argparse()
     args = parser.parse_args()
     setup_logging(args.verbose)
+    print args.timestamps
+    if args.timestamps:
+        interval = parse_timestamps(args.timestamps)
+        thread = threading.Thread( target = start_timestamping, name="Timestamping", args = (interval, ) )
+        thread.daemon = True
+        log.debug("Start timestamping thread with interval %s.", interval)
+        thread.start()
+                
     times = measure(args.command, args.time, args.rep)
     print("Execution of %s finished." % args.command)
     print("Total time: {:.4} seconds.".format(np.sum(times)))
