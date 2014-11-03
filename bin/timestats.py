@@ -11,7 +11,7 @@ def setup_argparse():
     parser.add_argument("--time", "-t", default=0, type=float, help='Maximum total runtime of timing tests')
     parser.add_argument("--timestamps", "-s", help="Print regular timestamps to stdout.")
     parser.add_argument("--verbose", "-v", action="store_const", const=0, default=15, help='Generate more output')
-    parser.add_argument("command", help="Command to execute")
+    parser.add_argument("command", help="Command to execute", nargs=argparse.REMAINDER)
     return parser
 
 def setup_logging(level):
@@ -73,7 +73,7 @@ def main():
     parser = setup_argparse()
     args = parser.parse_args()
     setup_logging(args.verbose)
-    print args.timestamps
+    command = " ".join(args.command) # concatenate the remaining arguments.
     if args.timestamps:
         interval = parse_timestamps(args.timestamps)
         thread = threading.Thread( target = start_timestamping, name="Timestamping", args = (interval, ) )
@@ -81,8 +81,8 @@ def main():
         log.debug("Start timestamping thread with interval %s.", interval)
         thread.start()
                 
-    times = measure(args.command, args.time, args.rep)
-    print("Execution of %s finished." % args.command)
+    times = measure(command, args.time, args.rep)
+    print("Execution of %s finished." % command)
     print("Total time: {:.4} seconds.".format(np.sum(times)))
     print("Max: {:.4}, Min: {:.4}, Mean: {:.4}, StdDev: {:.6f}".format(np.max(times), np.min(times), np.mean(times), np.std(times)))
     log.debug(times)
