@@ -7,7 +7,7 @@ log = logging.getLogger(sys.argv[0])
 
 def setup_argparse():
     parser = argparse.ArgumentParser(description='Times processes.')
-    parser.add_argument("--rep", "-m", default=1, type=int, help='Number of repetitions')
+    parser.add_argument("--rep", "-r", default=1, type=int, help='Number of repetitions')
     parser.add_argument("--time", "-t", default=0, type=float, help='Maximum total runtime of timing tests')
     parser.add_argument("--timestamps", "-s", help="Print regular timestamps to stdout.")
     parser.add_argument("--verbose", "-v", action="store_const", const=0, default=15, help='Generate more output')
