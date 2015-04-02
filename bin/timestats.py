@@ -1,4 +1,4 @@
-#!env python2
+#!env python3
 
 import argparse, logging, subprocess, sys, threading, time
 import numpy as np
